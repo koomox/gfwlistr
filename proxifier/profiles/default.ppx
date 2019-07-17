@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxifierProfile version="101" platform="Windows" product_id="1" product_minver="310">
+  <Options>
+    <Resolve>
+      <AutoModeDetection enabled="false" />
+      <ViaProxy enabled="true">
+        <TryLocalDnsFirst enabled="false" />
+      </ViaProxy>
+      <ExclusionList>%ComputerName%; localhost; *.local</ExclusionList>
+      <DnsUdpMode>0</DnsUdpMode>
+    </Resolve>
+    <ProxificationPortableEngine subsystem="32">
+      <Location>Winsock</Location>
+      <Type hotpatch="true">Prologue</Type>
+    </ProxificationPortableEngine>
+    <ProxificationPortableEngine subsystem="64">
+      <Location>Winsock</Location>
+      <Type hotpatch="false">Prologue</Type>
+    </ProxificationPortableEngine>
+    <Encryption mode="basic" />
+    <HttpProxiesSupport enabled="false" />
+    <HandleDirectConnections enabled="false" />
+    <ConnectionLoopDetection enabled="true" />
+    <ProcessServices enabled="false" />
+    <ProcessOtherUsers enabled="false" />
+  </Options>
+  <ProxyList>
+    <Proxy id="100" type="SOCKS5">
+      <Address>127.0.0.1</Address>
+      <Port>10258</Port>
+      <Options>48</Options>
+    </Proxy>
+  </ProxyList>
+  <ChainList />
+  <RuleList>
+    <Rule enabled="true">
+      <Name>Localhost</Name>
+      <Targets>localhost; 127.0.0.1; %ComputerName%; ::1</Targets>
+      <Action type="Direct" />
+    </Rule>
+    <Rule enabled="true">
+      <Name>IPv4</Name>
+      <Targets>10.0.0.0-10.255.255.255;127.0.0.1-127.255.255.255;172.16.0.0-172.31.255.255;192.168.0.0-192.168.255.255</Targets>
+      <Action type="Direct" />
+    </Rule>
+    <Rule enabled="true">
+      <Name>IPv6</Name>
+      <Targets>*:*:*:*:*:*:*:*;0:0:0:0:0:0:0:0-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff</Targets>
+      <Action type="Direct" />
+    </Rule>
+    <Rule enabled="true">
+      <Name>Whatsapp</Name>
+      <Applications>Whatsapp.exe; WhatsAppSetup.exe</Applications>
+      <Targets>www.whatsapp.com; web.whatsapp.com; *.whatsapp.com; *.whatsapp.net</Targets>
+      <Action type="Proxy">100</Action>
+    </Rule>
+    <Rule enabled="true">
+      <Name>Skype</Name>
+      <Applications>skype.exe</Applications>
+      <Targets>api.asm.skype.com; api.mcr.skype.com; api.aps.skype.com; wsapi.skype.com; msgsearch.skype.com; static.asm.skype.com; browser.pipe.aria.microsoft.com; static-asm.secure.skypeassets.com; *.skypeassets.com; *.skype.com</Targets>
+      <Action type="Proxy">100</Action>
+    </Rule>
+    <Rule enabled="true">
+      <Name>wire</Name>
+      <Applications>wire.exe;squirrel.exe</Applications>
+      <Targets>wire.com; www.wire.com; prod-nginz-ssl.wire.com; app.wire.com; *.wire.com</Targets>
+      <Action type="Proxy">100</Action>
+    </Rule>
+    <Rule enabled="true">
+      <Name>Spotify</Name>
+      <Applications>Spotify.exe</Applications>
+      <Targets>www.spotify.com; ap.spotify.com; *.spotify.com; *.scdn.com; *.googletagservices.com</Targets>
+      <Action type="Proxy">100</Action>
+    </Rule>
+    <Rule enabled="true">
+      <Name>Chrome</Name>
+      <Applications>Chrome.exe</Applications>
+      <Targets>ocsp.pki.goog; g.co; goo.gl; support.google.com; chrome.google.com; play.google.com; ssh.cloud.google.com; cloud.google.com; mtalk.google.com; accounts.google.com; clientservices.googleapis.com; oauthaccountmanager.googleapis.com; clients1.google.com; clients2.google.com; clients4.google.com; adservice.google.com; update.googleapis.com; apis.google.com; translate.googleapis.com; safebrowsing.googleapis.com; firebasestorage.googleapis.com; fonts.googleapis.com; storage.googleapis.com; www.googleapis.com; ssl.gstatic.com; csi.gstatic.com; *.google.com; *.google.com.hk; *.google.co.jp; www.google.com.sg; *.google.com.sg; *.gstatic.com; *.googleapis.com; *.googleusercontent.com; www.google-analytics.com; *.google-analytics.com; *.googleadservices.com; *.google-manager.com; www.youtube.com; *.youtube.com; *.googlevideo.com; i.ytimg.com; s.ytimg.com; *.ytimg.com; *.instagram.com; *.fbcdn.net; *.cdninstagram.com; facebook.com; www.facebook.com; connect.facebook.net; *.facebook.net; *.facebook.com; *.facebook.net; *.fbsbx.com; *.atdmt.com; t.co; twitter.com; *.twitter.com; *.twimg.com; *.soundcloud.com; *.sndcdn.com; duckduckgo.com; *.duckduckgo.com; *.torproject.org; *.android.com; *.apkpure.com; *.reddit.com; *.redditstatic.com; *.redditmedia.com; *.redd.it; *.telegram.org; *.telegram.me; *.t.me; wire.com; www.wire.com; prod-nginz-ssl.wire.com; app.wire.com; *.wire.com; www.whatsapp.com; web.whatsapp.com; *.whatsapp.com; *.whatsapp.net; *.line.me; urlload.net; *.urlload.net; *.messenger.com; *.golang.org; *.thepiratebay.org; *.pinterest.com; *.pinterest.ca; *.pinimg.com; *.tumblr.com; mega.nz; *.mega.co.nz; dropbox.com; www.dropbox.com; *.dropbox.com; *.dropboxcaptcha.com; *.dropboxstatic.com; discord.gg; *.discordapp.com; *.signal.org; vimeo.com; player.vimeo.com; *.vimeo.com; *.vimeocdn.com; www.flickr.com; api.flickr.com; *.flickr.com; ap.spotify.com; www.spotify.com; *.spotify.com; i.scdn.co; *.scdn.co; idsync.rlcdn.com; *.rlcdn.com; www.netflix.com; push.prod.netflilx.com; ichnaea-web.netflilx.com; codex.nflxext.com; assets.nflxext.com; *.netflix.com; *.nflxso.net; *.nflxvideo.net; *.nflxext.com; www.linkedin.com; *.linkedin.com; pandora.com; www.pandora.com; stats.pandora.com; *.pandora.com; www.sublimetext.com; *.sublimetext.com; skype.com; www.skype.com; api.cc.skype.com; static.asm.skype.com; secure.skypeassets.com; static-asm.secure.skypeassets.com; go.skype.com; login.skype.com; wsapi.skype.com; *.skype.com; mobile.pipe.aria.microsoft.com</Targets>
+      <Action type="Proxy">100</Action>
+    </Rule>
+    <Rule enabled="true">
+      <Name>Internet Explorer</Name>
+      <Applications>IEXPLORE.EXE</Applications>
+      <Targets>ocsp.pki.goog; g.co; goo.gl; support.google.com; chrome.google.com; play.google.com; ssh.cloud.google.com; cloud.google.com; mtalk.google.com; accounts.google.com; clientservices.googleapis.com; oauthaccountmanager.googleapis.com; clients1.google.com; clients2.google.com; clients4.google.com; adservice.google.com; update.googleapis.com; apis.google.com; translate.googleapis.com; safebrowsing.googleapis.com; firebasestorage.googleapis.com; fonts.googleapis.com; storage.googleapis.com; www.googleapis.com; ssl.gstatic.com; csi.gstatic.com; *.google.com; *.google.com.hk; *.google.co.jp; www.google.com.sg; *.google.com.sg; *.gstatic.com; *.googleapis.com; *.googleusercontent.com; www.google-analytics.com; *.google-analytics.com; *.googleadservices.com; *.google-manager.com; www.youtube.com; *.youtube.com; *.googlevideo.com; i.ytimg.com; s.ytimg.com; *.ytimg.com; *.instagram.com; *.fbcdn.net; *.cdninstagram.com; facebook.com; www.facebook.com; connect.facebook.net; *.facebook.net; *.facebook.com; *.facebook.net; *.fbsbx.com; *.atdmt.com; t.co; twitter.com; *.twitter.com; *.twimg.com; *.soundcloud.com; *.sndcdn.com; duckduckgo.com; *.duckduckgo.com; *.torproject.org; *.android.com; *.apkpure.com; *.reddit.com; *.redditstatic.com; *.redditmedia.com; *.redd.it; *.telegram.org; *.telegram.me; *.t.me; wire.com; www.wire.com; prod-nginz-ssl.wire.com; app.wire.com; *.wire.com; www.whatsapp.com; web.whatsapp.com; *.whatsapp.com; *.whatsapp.net; *.line.me; urlload.net; *.urlload.net; *.messenger.com; *.golang.org; *.thepiratebay.org; *.pinterest.com; *.pinterest.ca; *.pinimg.com; *.tumblr.com; mega.nz; *.mega.co.nz; dropbox.com; www.dropbox.com; *.dropbox.com; *.dropboxcaptcha.com; *.dropboxstatic.com; discord.gg; *.discordapp.com; *.signal.org; vimeo.com; player.vimeo.com; *.vimeo.com; *.vimeocdn.com; www.flickr.com; api.flickr.com; *.flickr.com; ap.spotify.com; www.spotify.com; *.spotify.com; i.scdn.co; *.scdn.co; idsync.rlcdn.com; *.rlcdn.com; www.netflix.com; push.prod.netflilx.com; ichnaea-web.netflilx.com; codex.nflxext.com; assets.nflxext.com; *.netflix.com; *.nflxso.net; *.nflxvideo.net; *.nflxext.com; www.linkedin.com; *.linkedin.com; pandora.com; www.pandora.com; stats.pandora.com; *.pandora.com; www.sublimetext.com; *.sublimetext.com; skype.com; www.skype.com; api.cc.skype.com; static.asm.skype.com; secure.skypeassets.com; static-asm.secure.skypeassets.com; go.skype.com; login.skype.com; wsapi.skype.com; *.skype.com; mobile.pipe.aria.microsoft.com</Targets>
+      <Action type="Proxy">100</Action>
+    </Rule>
+    <Rule enabled="true">
+      <Name>Firefox</Name>
+      <Applications>firefox.exe</Applications>
+      <Targets>ocsp.pki.goog; g.co; goo.gl; support.google.com; chrome.google.com; play.google.com; ssh.cloud.google.com; cloud.google.com; mtalk.google.com; accounts.google.com; clientservices.googleapis.com; oauthaccountmanager.googleapis.com; clients1.google.com; clients2.google.com; clients4.google.com; adservice.google.com; update.googleapis.com; apis.google.com; translate.googleapis.com; safebrowsing.googleapis.com; firebasestorage.googleapis.com; fonts.googleapis.com; storage.googleapis.com; www.googleapis.com; ssl.gstatic.com; csi.gstatic.com; *.google.com; *.google.com.hk; *.google.co.jp; www.google.com.sg; *.google.com.sg; *.gstatic.com; *.googleapis.com; *.googleusercontent.com; www.google-analytics.com; *.google-analytics.com; *.googleadservices.com; *.google-manager.com; www.youtube.com; *.youtube.com; *.googlevideo.com; i.ytimg.com; s.ytimg.com; *.ytimg.com; *.instagram.com; *.fbcdn.net; *.cdninstagram.com; facebook.com; www.facebook.com; connect.facebook.net; *.facebook.net; *.facebook.com; *.facebook.net; *.fbsbx.com; *.atdmt.com; t.co; twitter.com; *.twitter.com; *.twimg.com; *.soundcloud.com; *.sndcdn.com; duckduckgo.com; *.duckduckgo.com; *.torproject.org; *.android.com; *.apkpure.com; *.reddit.com; *.redditstatic.com; *.redditmedia.com; *.redd.it; *.telegram.org; *.telegram.me; *.t.me; wire.com; www.wire.com; prod-nginz-ssl.wire.com; app.wire.com; *.wire.com; www.whatsapp.com; web.whatsapp.com; *.whatsapp.com; *.whatsapp.net; *.line.me; urlload.net; *.urlload.net; *.messenger.com; *.golang.org; *.thepiratebay.org; *.pinterest.com; *.pinterest.ca; *.pinimg.com; *.tumblr.com; mega.nz; *.mega.co.nz; dropbox.com; www.dropbox.com; *.dropbox.com; *.dropboxcaptcha.com; *.dropboxstatic.com; discord.gg; *.discordapp.com; *.signal.org; vimeo.com; player.vimeo.com; *.vimeo.com; *.vimeocdn.com; www.flickr.com; api.flickr.com; *.flickr.com; ap.spotify.com; www.spotify.com; *.spotify.com; i.scdn.co; *.scdn.co; idsync.rlcdn.com; *.rlcdn.com; www.netflix.com; push.prod.netflilx.com; ichnaea-web.netflilx.com; codex.nflxext.com; assets.nflxext.com; *.netflix.com; *.nflxso.net; *.nflxvideo.net; *.nflxext.com; www.linkedin.com; *.linkedin.com; pandora.com; www.pandora.com; stats.pandora.com; *.pandora.com; www.sublimetext.com; *.sublimetext.com; skype.com; www.skype.com; api.cc.skype.com; static.asm.skype.com; secure.skypeassets.com; static-asm.secure.skypeassets.com; go.skype.com; login.skype.com; wsapi.skype.com; *.skype.com; mobile.pipe.aria.microsoft.com</Targets>
+      <Action type="Proxy">100</Action>
+    </Rule>
+    <Rule enabled="true">
+      <Name>Default</Name>
+      <Action type="Direct" />
+    </Rule>
+  </RuleList>
+</ProxifierProfile>
